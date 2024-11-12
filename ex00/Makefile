@@ -1,6 +1,6 @@
-NAME		=	Find
+NAME		=	btc
 
-SRC			=	main.cpp
+SRC			=	main.cpp BitcoinExchange.cpp
 
 OBJS		=	$(SRC:.cpp=.o)
 
@@ -8,9 +8,9 @@ COMPILE		=	c++
 
 FLAGS		=	-Wall -Wextra -Werror -std=c++17 
 
-EXE_NAME	=	-o Find
+EXE_NAME	=	-o btc
 
-EXEC		=	Find
+EXEC		=	btc
 
 # ------------------------------------- RULES ---------------------------------
 all: $(NAME)
