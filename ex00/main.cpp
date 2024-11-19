@@ -1,5 +1,20 @@
 #include "BitcoinExchange.hpp"
+#include <regex>
 
+bool isValidDate(const std::string &date) {
+    std::regex datePattern(R"(\d{4}-\d{2}-\d{2}\s*)");
+    if (!std::regex_match(date, datePattern)) {
+        return false;
+    }
+    std::istringstream ss(date);
+    int year, month, day;
+    char dash1, dash2;
+    ss >> year >> dash1 >> month >> dash2 >> day;
+    if (dash1 != '-' || dash2 != '-' || month < 1 || month > 12 || day < 1 || day > 31) {
+        return false;
+    }
+    return true;
+}
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
@@ -30,6 +45,10 @@ int main(int argc, char *argv[]) {
                 float value = std::stof(valueStr);
                 if (value < 0 || value > 1000) {
                     std::cerr << "Error: value out of range." << std::endl;
+                    continue;
+                }
+                if (!isValidDate(date)) {
+                    std::cerr << "Error: invalid date." << std::endl;
                     continue;
                 }
                 float result = btc.getValue(date, value);
