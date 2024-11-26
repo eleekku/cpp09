@@ -20,10 +20,6 @@ class RPNCalculator {
 		void sub();
 		void mul();
 		void div();
-		float top() const;
-		void pop();
-		bool empty() const;
-		void clear();
 		void print() const;
 		void calculate(const std::string &expr);
 };

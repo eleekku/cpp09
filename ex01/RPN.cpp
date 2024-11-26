@@ -68,30 +68,6 @@ void RPNCalculator::div() {
 	this->stack.push(b / a);
 }
 
-float RPNCalculator::top() const {
-	if (this->stack.empty()) {
-		throw std::runtime_error("Stack is empty");
-	}
-	return this->stack.top();
-}
-
-void RPNCalculator::pop() {
-	if (this->stack.empty()) {
-		throw std::runtime_error("Stack is empty");
-	}
-	this->stack.pop();
-}
-
-bool RPNCalculator::empty() const {
-	return this->stack.empty();
-}
-
-void RPNCalculator::clear() {
-	while (!this->stack.empty()) {
-		this->stack.pop();
-	}
-}
-
 void RPNCalculator::print() const {
 	std::stack<float> tmp = this->stack;
 	while (!tmp.empty()) {
